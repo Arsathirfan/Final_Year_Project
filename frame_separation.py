@@ -2,11 +2,7 @@ import os
 import cv2
 
 def extract_frames_from_videos(input_dir, output_dir):
-    """
-    Extract frames from videos in the input directory and save them in a structured output directory.
-    :param input_dir: Directory containing videos.
-    :param output_dir: Directory to save extracted frames.
-    """
+
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -52,6 +48,6 @@ def extract_frames_from_videos(input_dir, output_dir):
             print(f"Extracted {frame_count} frames from {video_file}.")
 
 if __name__ == "__main__":
-    input_directory = "dataset1"
-    output_directory = "dataset"
+    input_directory = "D:\\project_folder\\data_set"
+    output_directory = "D:\\project_folder\\data_set_frames"
     extract_frames_from_videos(input_directory, output_directory)

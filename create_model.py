@@ -12,7 +12,7 @@ class CNN_BiLSTM_Model(tf.keras.Model):
         super(CNN_BiLSTM_Model, self).__init__()
 
         # CNN feature extractor using pre-trained ResNet50
-        self.cnn = tf.keras.applications.ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+        self.cnn = tf.keras.applications.ResNet50(weights='imagenet', include_top=False, input_shape=(299, 299, 3))
         self.cnn.trainable = False  # Freeze the layers of the CNN
 
         # Global Average Pooling to flatten the output of CNN
@@ -49,7 +49,7 @@ class CNN_BiLSTM_Model(tf.keras.Model):
 
 # Dataset loading and preprocessing
 class SequenceDataset(tf.keras.utils.Sequence):
-    def __init__(self, sequences_dir, batch_size=32, sequence_length=10, target_size=(224, 224)):
+    def __init__(self, sequences_dir, batch_size=32, sequence_length=10, target_size=(299, 299)):
         self.sequences_dir = sequences_dir
         self.batch_size = batch_size
         self.sequence_length = sequence_length
@@ -96,11 +96,11 @@ model = CNN_BiLSTM_Model(sequence_length=sequence_length)
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Create DataLoaders (train, validation)
-train_dataset = SequenceDataset("dataset_sequences/train", batch_size=32, sequence_length=sequence_length)
-val_dataset = SequenceDataset("dataset_sequences/validate", batch_size=32, sequence_length=sequence_length)
+train_dataset = SequenceDataset("D:\\project_folder\\final_dataset\\train", batch_size=32, sequence_length=sequence_length)
+val_dataset = SequenceDataset("D:\\project_folder\\final_dataset\\validate", batch_size=32, sequence_length=sequence_length)
 
 # Train the model
-model.fit(train_dataset, validation_data=val_dataset, epochs=10)
+model.fit(train_dataset, validation_data=val_dataset, epochs=1)
 
 # Save the trained model
 model.save('cnn_bilstm_fight_detection_model.h5')
