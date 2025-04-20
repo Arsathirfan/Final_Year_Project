@@ -104,4 +104,3 @@ model.fit(train_dataset, validation_data=val_dataset, epochs=1)
 
 # Save the trained model
 model.save('cnn_bilstm_fight_detection_model.h5')
-

@@ -11,3 +11,6 @@ print(tensorflow.__version__)
 #     cv2.imshow('frame', frame)
 #     if cv2.waitKey(1) & 0xFF == ord('q'):
 #         break
+
+
+#pip install "C:\Users\arsat\Downloads\tensorflow-2.8.0-cp39-cp39-win_amd64.whl"
